@@ -1,0 +1,9 @@
+[Unit]
+Description=Cloudflare DDNS Updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/scripts/cloudflare_ddns
+EnvironmentFile=%h/.config/systemd/user/.cloudflare-ddns.env
