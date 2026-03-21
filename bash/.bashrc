@@ -101,6 +101,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -119,3 +123,7 @@ export CF_ZONE_ID="3efe6a345be6c051e5d7ec622545f6cc"
 export PATH="$HOME/scripts:$PATH"
 export TUNNEL_TOKEN="eyJhIjoiNDUwNzI4OWMxY2YxZmE2N2E1ZWQ4NzI1NmJjZWIzNmYiLCJ0IjoiOTU2YTFiZGEtMjM5Ni00ODRlLTllZTAtZTFjYWM3MTU2MmE5IiwicyI6Ik9EUm1Nek01WVRrdE5EVmhNQzAwTURNekxUaGpObU10TXpBeU5XTTVOV1JrTXpndyJ9"
 
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
