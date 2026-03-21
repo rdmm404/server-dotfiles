@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Shared environment should also be available to non-interactive bash.
+if [ -f "$HOME/.bash_env" ]; then
+    . "$HOME/.bash_env"
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -115,15 +120,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-. "$HOME/.local/bin/env"
-
-export CF_API_TOKEN="r9Y9THFgtb84NViJj-iU-mLRBxcYqwiC8fiXq5CB"
-export CF_ZONE_ID="3efe6a345be6c051e5d7ec622545f6cc"
-export PATH="$HOME/scripts:$PATH"
-export TUNNEL_TOKEN="eyJhIjoiNDUwNzI4OWMxY2YxZmE2N2E1ZWQ4NzI1NmJjZWIzNmYiLCJ0IjoiOTU2YTFiZGEtMjM5Ni00ODRlLTllZTAtZTFjYWM3MTU2MmE5IiwicyI6Ik9EUm1Nek01WVRrdE5EVmhNQzAwTURNekxUaGpObU10TXpBeU5XTTVOV1JrTXpndyJ9"
-
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
