@@ -20,3 +20,12 @@ acl_fix() {
     echo "Done: $dir"
   done
 }
+
+tsesh() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: tsesh <name>"
+    return 1
+  fi
+
+  tmux new -ADs "$1"
+}
