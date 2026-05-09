@@ -1,7 +1,7 @@
 [Unit]
 Description=Nanobot Gateway
-After=network-online.target
-Wants=network-online.target
+After=network-online.target nanobot-whatsapp-bridge.service
+Wants=network-online.target nanobot-whatsapp-bridge.service
 
 [Service]
 Type=simple

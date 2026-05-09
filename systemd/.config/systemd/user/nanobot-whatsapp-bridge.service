@@ -1,0 +1,17 @@
+[Unit]
+Description=Nanobot WhatsApp Bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.nanobot/bridge
+Environment=AUTH_DIR=%h/.nanobot/whatsapp-auth
+Environment=BRIDGE_PORT=3001
+EnvironmentFile=%h/.nanobot/whatsapp-auth/bridge-token.env
+ExecStart=%h/.local/share/fnm/aliases/default/bin/node dist/index.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
