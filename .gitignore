@@ -1,2 +1,6 @@
 bash/.bash_secrets
 systemd/.config/systemd/user/*.wants/
+
+systemd/.config/systemd/user/*.env
+systemd/.config/systemd/user/.*.env
+nanobot/langfuse.env
