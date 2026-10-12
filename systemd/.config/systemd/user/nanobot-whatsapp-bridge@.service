@@ -1,14 +1,14 @@
 [Unit]
-Description=Nanobot WhatsApp Bridge
+Description=Nanobot WhatsApp Bridge (%i)
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
 WorkingDirectory=%h/.nanobot/bridge
-Environment=AUTH_DIR=%h/.nanobot/whatsapp-auth
+Environment=AUTH_DIR=%h/.nanobot/profiles/%i/whatsapp-auth
 Environment=BRIDGE_PORT=3001
-EnvironmentFile=%h/.nanobot/whatsapp-auth/bridge-token.env
+EnvironmentFile=%h/.nanobot/profiles/%i/whatsapp-auth/bridge-token.env
 ExecStart=%h/.local/share/fnm/aliases/default/bin/node dist/index.js
 Restart=always
 RestartSec=5

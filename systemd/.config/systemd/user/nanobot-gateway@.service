@@ -1,0 +1,16 @@
+[Unit]
+Description=Nanobot Gateway (%i)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.nanobot/profiles/%i/workspace
+EnvironmentFile=-%h/.nanobot/langfuse.env
+EnvironmentFile=-%h/.nanobot/profiles/%i/.env
+ExecStart=%h/.local/bin/nanobot gateway --config %h/.nanobot/profiles/%i/config.json --workspace %h/.nanobot/profiles/%i/workspace
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
