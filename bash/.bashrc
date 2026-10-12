@@ -120,3 +120,16 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# User-installed tools; follow fnm's default alias rather than one Node version.
+export PNPM_HOME="$HOME/.local/share/pnpm"
+for path_dir in "$PNPM_HOME/bin" "$HOME/.local/bin" "$HOME/.local/share/fnm/aliases/default/bin"; do
+  if [ -d "$path_dir" ]; then
+    case ":$PATH:" in
+      *":$path_dir:"*) ;;
+      *) PATH="$path_dir:$PATH" ;;
+    esac
+  fi
+done
+unset path_dir
+export PATH

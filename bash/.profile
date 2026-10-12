@@ -16,14 +16,16 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+# Add user tools once, including the Node version selected by fnm's default alias.
+for path_dir in "$HOME/bin" "$HOME/.local/bin" "$HOME/.local/share/fnm/aliases/default/bin"; do
+    if [ -d "$path_dir" ]; then
+        case ":$PATH:" in
+            *":$path_dir:"*) ;;
+            *) PATH="$path_dir:$PATH" ;;
+        esac
+    fi
+done
+unset path_dir
+export PATH
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
