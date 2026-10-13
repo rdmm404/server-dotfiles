@@ -1,7 +1,8 @@
 version: "1"
 
 includes:
-  - /home/rdmm404/services/databases/backup.yaml
+  - /home/rdmm404/.config/resticprofile/postgres.yaml
+  - /home/rdmm404/.config/resticprofile/finance.yaml
 
 global:
   initialize: false
@@ -17,3 +18,4 @@ default:
 groups:
   homelab-core:
     - postgres
+    - finance-recovery
