@@ -1,0 +1,19 @@
+version: "1"
+
+includes:
+  - /home/rdmm404/services/databases/backup.yaml
+
+global:
+  initialize: false
+
+default:
+  repository: "rclone:nautilus-drive:backups/nautilus"
+  password-file: /home/rdmm404/.config/resticprofile/restic-password
+  env:
+    RCLONE_CONFIG: /home/rdmm404/.config/resticprofile/rclone.conf
+
+# Explicit membership. Finance restore verified; scheduling/alerts are deferred
+# until services run on Nautilus. No automatic retention/pruning yet.
+groups:
+  homelab-core:
+    - postgres
